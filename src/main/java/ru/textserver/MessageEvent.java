@@ -1,4 +1,4 @@
-package org.example;
+package ru.textserver;
 
 import java.util.EventObject;
 
@@ -11,4 +11,5 @@ public class MessageEvent extends EventObject {
     public String getMessage() {
         return message;
     }
+
 }

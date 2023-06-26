@@ -1,4 +1,4 @@
-package org.example;
+package ru.textserver;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Server {
+public abstract class Server {
     private final int port;
     public Server(int port) {
         this.port = port;
@@ -23,10 +23,7 @@ public class Server {
                 ClientManager clientManager = new ClientManager(client);
                 System.out.println(clientManager + " connected");
 
-                clientManager.addMessageListener(e -> {
-                    String message = e.getMessage();
-                    sendAll(message);
-                });
+                clientManager.addMessageListener(e -> OnMessage((ClientManager) e.getSource(), e.getMessage()));
 
                 clientManagers.add(clientManager);
 
@@ -48,4 +45,5 @@ public class Server {
             clientManager.send(message);
         }
     }
+    public abstract void OnMessage(ClientManager clientManager, String message) throws IOException;
 }

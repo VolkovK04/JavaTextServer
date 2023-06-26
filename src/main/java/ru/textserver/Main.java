@@ -1,4 +1,4 @@
-package org.example;
+package ru.textserver;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,7 +7,7 @@ public class Main {
     static ExecutorService thread = Executors.newCachedThreadPool();
 
     public static void main(String[] args) {
-        Server server = new Server(3000);
+        Server server = new MyServer(3000);
         thread.submit(server::start);
 
     }

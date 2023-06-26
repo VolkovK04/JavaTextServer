@@ -1,4 +1,4 @@
-package org.example;
+package ru.textserver;
 
 import java.io.*;
 import java.net.Socket;
